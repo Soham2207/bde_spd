@@ -10,10 +10,10 @@ from sklearn.preprocessing import MinMaxScaler
 
 def run_twitter_etl():
 
-    access_key = "<Enter key here>"
-    access_secret = "<Enter key here>"
-    consumer_key = "<Enter key here>"
-    consumer_secret = "<Enter key here>"
+    access_key = "wj75uCojSIlCSUYT2NqUXZIBI"
+    access_secret = "H481c33PsbkR03tpgftSXUndBtrEWE52EYHjRVk64Z3L1F9IIM"
+    consumer_key = "1012031263245467653-YDqV3vswaJtfzV1LeaiofllKJkZoIE"
+    consumer_secret = "20Pf6AoMIzDW29WpbX9jJeUHT9twsE6BjVTVxXQywu4PJ"
 
     # Twitter authentication
     auth = tweepy.OAuthHandler(access_key, access_secret)
@@ -45,7 +45,7 @@ def run_twitter_etl():
     scaler.fit(df['score'].values.reshape(-1,1))
     df['score'] = scaler.transform(df['score'].values.reshape(-1,1))
     df = df.groupby(df['created_at'])['score'].mean()
-    df.to_csv('refined_tweets.csv')
+    df.to_csv('s3://deltabase/bde_temp_storage/refined_tweets.csv')
 
 
-run_twitter_etl()
+

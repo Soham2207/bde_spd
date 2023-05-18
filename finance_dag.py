@@ -8,7 +8,7 @@ from finance_etl import run_finance_etl
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2023,05,13),
+    'start_date': datetime(2023,5,13),
     'email': ['soham.rane2207@gmail.com'],
     'email_on_failure': False,
     'email_on_retry': False,
